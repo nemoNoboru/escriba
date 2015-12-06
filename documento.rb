@@ -4,10 +4,10 @@ class Documento
   attr_reader :nombreDocumento, :infoStrings , :clases, :funciones, :estructuras
   def initialize nombreDocumento
     @nombreDocumento = nombreDocumento
-    @infoStrings = new Array
-    @clases =      new Array
-    @funciones =   new Array
-    @estructuras = new Array
+    @infoStrings = Array.new
+    @clases =      Array.new
+    @funciones =   Array.new
+    @estructuras = Array.new
   end
 
   def pushInfoString infoString

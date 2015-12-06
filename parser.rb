@@ -1,14 +1,18 @@
 require './documento.rb'
 
 class Parser
+  attr_reader :documento
   def initialize nombreDocumento
-    @documento = new Documento nombreDocumento
-    @pattern = /{!} +([^ ]+)/
+    @documento = Documento.new(nombreDocumento)
+    @pattern = /{!} +([^ ]+) +(.+)/
     @actualNode = @documento
   end
 
   def parse raw
     result = @pattern.match raw
+    if result == nil
+      return false
+    end
     case result[1]
     when "class"
       pushClass result[2]
@@ -53,10 +57,10 @@ class Parser
   end
 
   def pushFunction data
-    @document.funciones.push data
+    @documento.funciones.push data
   end
 
   def pushAtribute data
-    @document.funciones.push data
+    @documento.funciones.push data
   end
 end

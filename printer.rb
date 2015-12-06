@@ -4,10 +4,10 @@ class Printer
   attr_reader :buffer
   def initialize(output,documento)
     @documento = documento
-    if File.exists output
+    @output = output
+    if File.exists? output
       return false
     end
-    @output = File.new(output,"w")
     @buffer = ""
   end
 
@@ -15,10 +15,19 @@ class Printer
     @buffer = @buffer + string + "\n"
   end
 
+  def printToFile
+    output = File.new(@output,"w")
+    output.puts @buffer
+    output.close
+  rescue IOError => err
+    puts "Error printing to file"
+    puts err
+  end
+    
   def printDoc
     addb "<html>"
     addb "  <head>"
-    addb "    <title>#{@documento.nombreDocumento}</title">
+    addb "    <title>#{@documento.nombreDocumento}</title>"
     addb "  </head>"
     addb "  <body>"
     addb "    <h1> #{@documento.nombreDocumento} </h1>"
