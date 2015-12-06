@@ -1,2 +1,2 @@
 # escriba
-Simple html documentation generator based in comments in code.
+Language agnostic simple html documentation generator based in specially crafted comments in code.
