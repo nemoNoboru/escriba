@@ -74,3 +74,30 @@ class Printer
     end
     addb "</ul>"
   end
+
+  def printEstructuras
+    if @documento.estructuras.empty?
+      addb "This Document doesn't have structs"
+      return false
+    end
+    addb "<h3> Structs </h3>"
+    addb "<ul>"
+    @documento.estructuras.each do |estructura|
+      addb "<li> #{estructura} </li>"
+    end
+    addb "</ul>"
+  end
+
+  def printFunciones
+    if @documento.funciones.empty?
+      addb "This Document doesn't have functions"
+      return false
+    end
+    addb "<h3> Functions </h3>"
+    addb "<ul>"
+    @documento.funciones.each do |funcion|
+      addb "<li> #{funcion} </li>"
+    end
+    addb "</ul>"
+  end
+end
