@@ -23,7 +23,7 @@ class Printer
     puts "Error printing to file"
     puts err
   end
-    
+
   def printDoc
     addb "<html>"
     addb "  <head>"
@@ -45,7 +45,7 @@ class Printer
 
   def printClases
     if @documento.clases.empty?
-      addb "there is no classes in this document"
+      addb "<div>there is no classes in this document</div>"
       return false
     end
     @documento.clases.each do |clase|
@@ -60,7 +60,7 @@ class Printer
 
   def printMetodos clase
     if clase.metodos.empty?
-      addb "This class doesn't have methods"
+      addb "<div>This class doesn't have methods</div>"
       return false
     end
     addb "<h3> Methods </h3>"
@@ -73,7 +73,7 @@ class Printer
 
   def printAtributos clase
     if clase.atributos.empty?
-      addb "This class doesn't have atributes"
+      addb "<div>This class doesn't have atributes</div>"
       return false
     end
     addb "<h3> Atributes </h3>"
@@ -86,7 +86,7 @@ class Printer
 
   def printEstructuras
     if @documento.estructuras.empty?
-      addb "This Document doesn't have structs"
+      addb "<div>This Document doesn't have structs</div>"
       return false
     end
     addb "<h3> Structs </h3>"
@@ -99,7 +99,7 @@ class Printer
 
   def printFunciones
     if @documento.funciones.empty?
-      addb "This Document doesn't have functions"
+      addb "<div>This Document doesn't have functions</div>"
       return false
     end
     addb "<h3> Functions </h3>"
