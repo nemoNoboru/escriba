@@ -2,9 +2,9 @@ class Clase
   attr_reader :infoStrings, :nombre , :metodos , :atributos
   def initialize nombreClase
     @nombre = nombreClase
-    @infoStrings = new Array
-    @metodos     = new Array
-    @atributos   = new Array
+    @infoStrings = Array.new
+    @metodos     = Array.new
+    @atributos   = Array.new
   end
 
   def pushMetodo metodo

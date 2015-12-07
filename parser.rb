@@ -33,7 +33,7 @@ class Parser
   end
 
   def pushClass data
-    newClass = new Clase data
+    newClass = Clase.new data
     @actualNode = newClass
     @documento.clases.push newClass
   end
@@ -57,10 +57,6 @@ class Parser
   end
 
   def pushFunction data
-    @documento.funciones.push data
-  end
-
-  def pushAtribute data
     @documento.funciones.push data
   end
 end

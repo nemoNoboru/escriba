@@ -1,20 +1,26 @@
 require './documento.rb'
-
+# {!} class Printer, a class that reads a class Document , formates it to html and then print it to file
+# {!} info Class made to Escriba by Felipe Vieira
+# {!} info the class requires documento.rb
 class Printer
   attr_reader :buffer
+  # {!} method initialize(outputfile,documento) : bool. initializes the class
   def initialize(output,documento)
+    #{!} atribute documento: Documento class to print
     @documento = documento
+    # {!} atribute output: file to print to
     @output = output
-    if File.exists? output
-      return false
-    end
+  #  if File.exists? output
+  #    return false
+  #  end
+    # {!} atribute buffer: stores all the procesed html
     @buffer = ""
   end
-
+  # {!} method addb changes the atribute buffer, a helper function to print to buffer
   def addb string
     @buffer = @buffer + string + "\n"
   end
-
+  # {!} method printToFile : throw IOError . Method to print buffer atribute to output file
   def printToFile
     output = File.new(@output,"w")
     output.puts @buffer
@@ -23,7 +29,7 @@ class Printer
     puts "Error printing to file"
     puts err
   end
-
+  # {!} method printDoc : process the class Documento into html
   def printDoc
     addb "<html>"
     addb "  <head>"
@@ -35,9 +41,9 @@ class Printer
     @documento.infoStrings.each do |infostring|
       addb infostring
     end
-    printClases
     printEstructuras
     printFunciones
+    printClases
 
     addb "  </body>"
     addb "</html>"
@@ -53,8 +59,8 @@ class Printer
       clase.infoStrings.each do |infostring|
         addb infostring
       end
-      printMetodos clase
       printAtributos clase
+      printMetodos clase
     end
   end
 
